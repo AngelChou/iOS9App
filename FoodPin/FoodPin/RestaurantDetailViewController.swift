@@ -12,6 +12,7 @@ class RestaurantDetailViewController: UIViewController, UITableViewDelegate, UIT
 
     @IBOutlet var restaurantImageView:UIImageView!
     @IBOutlet var tableView:UITableView!
+    @IBOutlet var ratingButton:UIButton!
     
 //    @IBOutlet var restaurantNameLabel: UILabel!
 //    @IBOutlet var restaurantLocationLabel: UILabel!
@@ -93,6 +94,15 @@ class RestaurantDetailViewController: UIViewController, UITableViewDelegate, UIT
         super.viewWillAppear(animated)
         navigationController?.hidesBarsOnSwipe = false
         navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
+    @IBAction func close(segue:UIStoryboardSegue){
+        if let reviewViewController = segue.sourceViewController as? ReviewViewController{
+            if let rating = reviewViewController.rating {
+                ratingButton.setImage(UIImage(named: rating), forState: UIControlState.Normal)
+                restaurant.rating = rating
+            }
+        }
     }
 
 }

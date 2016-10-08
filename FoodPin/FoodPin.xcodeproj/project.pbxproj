@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA4771621DA94A3500570F35 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4771611DA94A3500570F35 /* ReviewViewController.swift */; };
 		AA9C399A1DA4F47500E005E8 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9C39991DA4F47500E005E8 /* Restaurant.swift */; };
 		AA9C399E1DA5057200E005E8 /* RestaurantDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9C399D1DA5057200E005E8 /* RestaurantDetailTableViewCell.swift */; };
 		AAA40D2D1D563F0F00288094 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA40D2C1D563F0F00288094 /* AppDelegate.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AA4771611DA94A3500570F35 /* ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		AA9C39991DA4F47500E005E8 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		AA9C399D1DA5057200E005E8 /* RestaurantDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailTableViewCell.swift; sourceTree = "<group>"; };
 		AAA40D291D563F0F00288094 /* FoodPin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodPin.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,6 +74,7 @@
 				AAA40D421D58CBEA00288094 /* RestaurantDetailViewController.swift */,
 				AA9C39991DA4F47500E005E8 /* Restaurant.swift */,
 				AA9C399D1DA5057200E005E8 /* RestaurantDetailTableViewCell.swift */,
+				AA4771611DA94A3500570F35 /* ReviewViewController.swift */,
 			);
 			path = FoodPin;
 			sourceTree = "<group>";
@@ -149,6 +152,7 @@
 			files = (
 				AA9C399A1DA4F47500E005E8 /* Restaurant.swift in Sources */,
 				AAA40D3F1D563FDC00288094 /* RestaurantTableViewController.swift in Sources */,
+				AA4771621DA94A3500570F35 /* ReviewViewController.swift in Sources */,
 				AAA40D411D57234000288094 /* RestaurantTableViewCell.swift in Sources */,
 				AA9C399E1DA5057200E005E8 /* RestaurantDetailTableViewCell.swift in Sources */,
 				AAA40D431D58CBEA00288094 /* RestaurantDetailViewController.swift in Sources */,

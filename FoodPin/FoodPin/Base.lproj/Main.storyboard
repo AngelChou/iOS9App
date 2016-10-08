@@ -89,7 +89,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wHH-be-TNb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1070" y="441"/>
+            <point key="canvasLocation" x="-81" y="961"/>
         </scene>
         <!--Restaurant Detail View Controller-->
         <scene sceneID="teG-wg-d7d">
@@ -163,23 +163,168 @@
                                     <outlet property="delegate" destination="n8u-2S-Mae" id="2bR-XX-dcf"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n7G-Eo-zzn">
+                                <rect key="frame" x="533" y="72" width="40" height="40"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="H1c-dn-pKC"/>
+                                    <constraint firstAttribute="height" constant="40" id="R5e-lx-AMj"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <state key="normal" image="rating"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="ULw-9P-OTY" kind="presentation" identifier="showReview" id="eTh-q1-1Gh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="n7G-Eo-zzn" firstAttribute="trailing" secondItem="148-e6-SXf" secondAttribute="trailingMargin" constant="-7" id="Ert-jf-LXU"/>
                             <constraint firstAttribute="trailingMargin" secondItem="LCq-mh-pAG" secondAttribute="trailing" constant="-20" id="gf9-cW-mP5"/>
+                            <constraint firstItem="n7G-Eo-zzn" firstAttribute="top" secondItem="eHn-rh-IKR" secondAttribute="bottom" constant="8" id="jh2-aC-88e"/>
                             <constraint firstItem="LCq-mh-pAG" firstAttribute="leading" secondItem="148-e6-SXf" secondAttribute="leadingMargin" constant="-20" id="kzQ-Pl-BB4"/>
                             <constraint firstItem="LCq-mh-pAG" firstAttribute="top" secondItem="148-e6-SXf" secondAttribute="topMargin" id="tgG-GK-UhT"/>
                             <constraint firstItem="e8t-oz-Aog" firstAttribute="top" secondItem="LCq-mh-pAG" secondAttribute="bottom" id="vUo-dH-g5W"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="ratingButton" destination="n7G-Eo-zzn" id="ifA-a3-ETK"/>
                         <outlet property="restaurantImageView" destination="yk3-3p-uAZ" id="fPo-1X-Ha9"/>
                         <outlet property="tableView" destination="LCq-mh-pAG" id="VlL-oH-p2c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zS4-Nt-NrN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1764" y="441"/>
+            <point key="canvasLocation" x="656" y="961"/>
+        </scene>
+        <!--Review View Controller-->
+        <scene sceneID="L0k-2K-2mT">
+            <objects>
+                <viewController id="ULw-9P-OTY" customClass="ReviewViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tq5-9f-jCo"/>
+                        <viewControllerLayoutGuide type="bottom" id="9Ym-KN-Hkz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2uv-Wc-SlB">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="barrafina" translatesAutoresizingMaskIntoConstraints="NO" id="Zno-lt-evv">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You've dined here. What did you think?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCr-uO-s74">
+                                <rect key="frame" x="160" y="83" width="280" height="83"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="eFy-yS-8Aa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="RBA-pM-f4Y">
+                                <rect key="frame" x="185" y="174" width="230" height="70"/>
+                                <subviews>
+                                    <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Agb-wg-Wt9">
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="ERZ-Pw-Gck"/>
+                                            <constraint firstAttribute="width" constant="70" id="dcc-ad-YUx"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" image="dislike"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="35"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="ratingSelected:" destination="ULw-9P-OTY" eventType="touchUpInside" id="3fa-U2-fIT"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="200" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OMl-e1-N5K">
+                                        <rect key="frame" x="80" y="0.0" width="70" height="70"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="70" id="RWE-ij-vLA"/>
+                                            <constraint firstAttribute="height" constant="70" id="olp-8m-bvZ"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" image="good"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="35"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="ratingSelected:" destination="ULw-9P-OTY" eventType="touchUpInside" id="16c-Z4-PWr"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="300" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6af-Jr-fP6">
+                                        <rect key="frame" x="160" y="0.0" width="70" height="70"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="0Ed-P2-t3e"/>
+                                            <constraint firstAttribute="width" constant="70" id="U1q-al-1Li"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <state key="normal" image="great"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="35"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="ratingSelected:" destination="ULw-9P-OTY" eventType="touchUpInside" id="Hqd-jO-0U1"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NcN-KF-Nv4">
+                                <rect key="frame" x="550" y="20" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="8IR-yd-QKn"/>
+                                    <constraint firstAttribute="width" constant="30" id="Gb2-Bi-1XL"/>
+                                </constraints>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="close"/>
+                                <connections>
+                                    <segue destination="Sj6-V3-1Ee" kind="unwind" identifier="unwindToDetailView" unwindAction="close:" id="cHA-Vm-sRc"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="BCr-uO-s74" firstAttribute="centerX" secondItem="Zno-lt-evv" secondAttribute="centerX" id="5jO-Pg-NbK"/>
+                            <constraint firstItem="Zno-lt-evv" firstAttribute="bottom" secondItem="9Ym-KN-Hkz" secondAttribute="top" id="6zH-Ro-hfn"/>
+                            <constraint firstItem="BCr-uO-s74" firstAttribute="centerX" secondItem="RBA-pM-f4Y" secondAttribute="centerX" id="Ejd-eM-vVS"/>
+                            <constraint firstItem="Zno-lt-evv" firstAttribute="leading" secondItem="2uv-Wc-SlB" secondAttribute="leading" id="LyA-w4-9nb"/>
+                            <constraint firstItem="BCr-uO-s74" firstAttribute="top" secondItem="tq5-9f-jCo" secondAttribute="bottom" constant="63" id="U0h-Az-xD7"/>
+                            <constraint firstItem="RBA-pM-f4Y" firstAttribute="top" secondItem="BCr-uO-s74" secondAttribute="bottom" constant="8" symbolic="YES" id="aSi-Uh-nLZ"/>
+                            <constraint firstItem="9Ym-KN-Hkz" firstAttribute="top" secondItem="RBA-pM-f4Y" secondAttribute="bottom" constant="356" id="eLQ-Aa-ptT"/>
+                            <constraint firstItem="Zno-lt-evv" firstAttribute="top" secondItem="2uv-Wc-SlB" secondAttribute="top" id="gfk-Sl-GPW"/>
+                            <constraint firstAttribute="trailing" secondItem="Zno-lt-evv" secondAttribute="trailing" id="gvz-gk-3oc"/>
+                            <constraint firstItem="NcN-KF-Nv4" firstAttribute="trailing" secondItem="2uv-Wc-SlB" secondAttribute="trailingMargin" id="r2g-JA-jhe"/>
+                            <constraint firstItem="NcN-KF-Nv4" firstAttribute="top" secondItem="tq5-9f-jCo" secondAttribute="bottom" id="u2T-jo-1IN"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundImageView" destination="Zno-lt-evv" id="s1U-cP-EQ9"/>
+                        <outlet property="dislikeButton" destination="Agb-wg-Wt9" id="IgK-A2-ASJ"/>
+                        <outlet property="goodButton" destination="OMl-e1-N5K" id="qdG-vT-S1o"/>
+                        <outlet property="greatButton" destination="6af-Jr-fP6" id="2PQ-2E-zaZ"/>
+                        <outlet property="ratingStackView" destination="RBA-pM-f4Y" id="fce-Zo-Vu3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WXF-lv-aCq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Sj6-V3-1Ee" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1469" y="556"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gmQ-Ji-oTG">
@@ -197,7 +342,15 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XOA-nJ-MQ7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="375" y="441"/>
+            <point key="canvasLocation" x="-81" y="135"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="barrafina" width="640" height="640"/>
+        <image name="close" width="84" height="84"/>
+        <image name="dislike" width="84" height="84"/>
+        <image name="good" width="256" height="256"/>
+        <image name="great" width="256" height="256"/>
+        <image name="rating" width="256" height="256"/>
+    </resources>
 </document>
