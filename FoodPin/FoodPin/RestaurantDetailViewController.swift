@@ -14,23 +14,14 @@ class RestaurantDetailViewController: UIViewController, UITableViewDelegate, UIT
     @IBOutlet var tableView:UITableView!
     @IBOutlet var ratingButton:UIButton!
     
-//    @IBOutlet var restaurantNameLabel: UILabel!
-//    @IBOutlet var restaurantLocationLabel: UILabel!
-//    @IBOutlet var restaurantTypeLabel: UILabel!
     var restaurant:Restaurant!
-//    var restaurantImage: String = ""
-//    var restaurantName: String = ""
-//    var restaurantLocation: String = ""
-//    var restaurantType: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         title = restaurant.name
-        // Do any additional setup after loading the view.
+        
         restaurantImageView.image = UIImage(named: restaurant.image)
-//        restaurantNameLabel.text = restaurant.name
-//        restaurantLocationLabel.text = restaurant.location
-//        restaurantTypeLabel.text = restaurant.type
         tableView.backgroundColor = UIColor(red: 240.0/255.0, green: 240.0/255.0, blue: 240.0/250.0, alpha: 0.2)
         tableView.tableFooterView = UIView(frame: CGRectZero)
         tableView.separatorColor = UIColor(red: 240.0/255.0, green: 240.0/255.0, blue: 240.0/255.0, alpha: 0.8)
@@ -79,16 +70,6 @@ class RestaurantDetailViewController: UIViewController, UITableViewDelegate, UIT
         
         return cell
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -104,5 +85,13 @@ class RestaurantDetailViewController: UIViewController, UITableViewDelegate, UIT
             }
         }
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if segue.identifier == "showMap" {
+            let destinationController = segue.destinationViewController as! MapViewController
+            destinationController.restaurant = restaurant
+        }
+    }
+    
 
 }
