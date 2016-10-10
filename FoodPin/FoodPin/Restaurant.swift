@@ -25,4 +25,5 @@ class Restaurant {
         self.isVisited = isVisited
         self.phoneNumber = phoneNumber
     }
+    
 }
