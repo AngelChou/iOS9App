@@ -21,7 +21,8 @@ class RestaurantDetailViewController: UIViewController, UITableViewDelegate, UIT
         
         title = restaurant.name
         
-        restaurantImageView.image = UIImage(named: restaurant.image)
+        //restaurantImageView.image = UIImage(named: restaurant.image)
+        restaurantImageView.image = UIImage(data: restaurant.image!)
         tableView.backgroundColor = UIColor(red: 240.0/255.0, green: 240.0/255.0, blue: 240.0/250.0, alpha: 0.2)
         tableView.tableFooterView = UIView(frame: CGRectZero)
         tableView.separatorColor = UIColor(red: 240.0/255.0, green: 240.0/255.0, blue: 240.0/255.0, alpha: 0.8)
@@ -60,7 +61,10 @@ class RestaurantDetailViewController: UIViewController, UITableViewDelegate, UIT
             cell.valueLabel.text = restaurant.phoneNumber
         case 4:
             cell.fieldLabel.text = "Been here"
-            cell.valueLabel.text = (restaurant.isVisited) ? "Yes, I've been here before" : "No"
+            if let isVisited = restaurant.isVisited?.boolValue {
+                cell.valueLabel.text = isVisited ? "Yes, I've been here before" : "No"
+            }
+            //cell.valueLabel.text = (restaurant.isVisited) ? "Yes, I've been here before" : "No"
         default:
             cell.fieldLabel.text = ""
             cell.valueLabel.text = ""

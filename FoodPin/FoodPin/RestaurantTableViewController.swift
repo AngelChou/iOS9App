@@ -7,9 +7,36 @@
 //
 
 import UIKit
+import CoreData
 
 class RestaurantTableViewController: UITableViewController {
-
+    
+    var restaurants:[Restaurant] = []
+    //
+    //    var restaurants:[Restaurant] = [
+    //        Restaurant(name: "Cafe Deadend", type: "Coffee & Tea Shop", location: "G/F, 72 Po Hing Fong, Sheung Wan, Hong Kong", image: "cafedeadend.jpg", isVisited: false, phoneNumber: "232-923423"),
+    //        Restaurant(name: "Homei", type: "Cafe", location: "Shop B, G/F, 22-24A Tai Ping San Street SOHO, Sheung Wan, Hong Kong", image: "homei.jpg", isVisited: false, phoneNumber: "348-233423"),
+    //        Restaurant(name: "Teakha", type: "Tea House", location: "Shop B, 18 Tai Ping Shan Road SOHO Sheung wan, Hong Kong", image: "teakha.jpg", isVisited: false, phoneNumber: "354-243523"),
+    //        Restaurant(name: "Cafe Loisl", type: "Austrian /Causual Drink", location: "Shop B, 20 Tai Ping Shan Road SOHO, Sheung Wan, Hong Kong", image: "cafeloisl.jpg", isVisited: false, phoneNumber: "453-333423"),
+    //        Restaurant(name: "Petite Oyster", type: "French", location: "24 Tai Ping Shan Road SOHO, Sheung Wan, Hong Kong", image: "petiteoyster.jpg", isVisited: false, phoneNumber: "983-284334"),
+    //        Restaurant(name: "For Kee Restaurant", type: "Bakery", location: "Shop JK., 200 Hollywood Road, SOHO, Sheung Wan, Hong Kong", image: "forkeerestaurant.jpg", isVisited: false, phoneNumber: "232-434222"),
+    //        Restaurant(name: "Po's Atelier", type: "Bakery", location: "G/F, 62 Po Hing Fong, Sheung Wan, Hong Kong", image: "posatelier.jpg", isVisited: false, phoneNumber: "234-834322"),
+    //        Restaurant(name: "Bourke Street Bakery", type: "Chocolate", location: "633 Bourke St Sydney New Wouth Wales 2010 Surry Hills", image: "bourkestreetbakery.jpg", isVisited: false, phoneNumber: "982-434343"),
+    //        Restaurant(name: "Haigh's Chocolate", type: "Cafe", location: "412-414 George St Sydney New South Wales", image: "haighschocolate.jpg", isVisited: false, phoneNumber: "734-232323"),
+    //        Restaurant(name: "Palomino Espresso", type: "American /Seafood", location: "Shop 1 61 York St Sydney New South Wales", image: "palominoespresso.jpg", isVisited: false, phoneNumber: "872-734343"),
+    //        Restaurant(name: "Upstate", type: "American", location: "95 1st Ave New York, NY 10003", image: "upstate.jpg", isVisited: false, phoneNumber: "343-233221"),
+    //        Restaurant(name: "Traif", type: "American", location: "229 S 4th St Brooklyn, NY 11211", image: "traif.jpg", isVisited: false, phoneNumber: "985-723623"),
+    //        Restaurant(name: "Graham Avenue Meats And Deli", type: "Breakfast & Brunch", location: "445 Graham Ave Brooklyn, NY 11211", image: "grahamavenuemeats.jpg", isVisited: false, phoneNumber: "445-232345"),
+    //        Restaurant(name: "Waffles & Wolf", type: "Coffee & Tea", location: "413 Graham Ave Brroklyn, NY 11211", image: "wafflewolf.jpg", isVisited: false, phoneNumber: "434-232322"),
+    //        Restaurant(name: "Five Leaves", type: "Coffee & Tea", location: "18 Bedford Ave Brooklyn, NY 11222", image: "fiveleaves.jpg", isVisited: false, phoneNumber: "343-234553"),
+    //        Restaurant(name: "Cafe Lore", type: "Latin American", location: "Sunset Park 4601 4th Ave Brooklyn, NY 11220", image: "cafelore.jpg", isVisited: false, phoneNumber: "342-455433"),
+    //        Restaurant(name: "Confessional", type: "Spanish", location: "308 E 6th St New York, NY 10003", image: "confessional.jpg", isVisited: false, phoneNumber: "643-332323"),
+    //        Restaurant(name: "Barrafina", type: "Spanish", location: "54 Frith Street London W1D 4SL United Kingdom", image: "barrafina.jpg", isVisited: false, phoneNumber: "542-343434"),
+    //        Restaurant(name: "Donostia", type: "Spanish", location: "10 Seymour Place London W1H 7ND United Kingdom", image: "donostia.jpg", isVisited: false, phoneNumber: "722-232323"),
+    //        Restaurant(name: "Royal Oak", type: "British", location: "2 Regency Street LOndon SW1P 4BZ United Kingdom", image: "royaloak.jpg", isVisited: false, phoneNumber: "343-988834"),
+    //        Restaurant(name: "Thai Cafe", type: "Thai", location: "22 Charlwood Street London SW1V 2DY Pimlico", image: "thaicafe.jpg", isVisited: false, phoneNumber: "432-344050"),
+    //    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -43,30 +70,6 @@ class RestaurantTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return restaurants.count
     }
-
-    var restaurants:[Restaurant] = [
-        Restaurant(name: "Cafe Deadend", type: "Coffee & Tea Shop", location: "G/F, 72 Po Hing Fong, Sheung Wan, Hong Kong", image: "cafedeadend.jpg", isVisited: false, phoneNumber: "232-923423"),
-        Restaurant(name: "Homei", type: "Cafe", location: "Shop B, G/F, 22-24A Tai Ping San Street SOHO, Sheung Wan, Hong Kong", image: "homei.jpg", isVisited: false, phoneNumber: "348-233423"),
-        Restaurant(name: "Teakha", type: "Tea House", location: "Shop B, 18 Tai Ping Shan Road SOHO Sheung wan, Hong Kong", image: "teakha.jpg", isVisited: false, phoneNumber: "354-243523"),
-        Restaurant(name: "Cafe Loisl", type: "Austrian /Causual Drink", location: "Shop B, 20 Tai Ping Shan Road SOHO, Sheung Wan, Hong Kong", image: "cafeloisl.jpg", isVisited: false, phoneNumber: "453-333423"),
-        Restaurant(name: "Petite Oyster", type: "French", location: "24 Tai Ping Shan Road SOHO, Sheung Wan, Hong Kong", image: "petiteoyster.jpg", isVisited: false, phoneNumber: "983-284334"),
-        Restaurant(name: "For Kee Restaurant", type: "Bakery", location: "Shop JK., 200 Hollywood Road, SOHO, Sheung Wan, Hong Kong", image: "forkeerestaurant.jpg", isVisited: false, phoneNumber: "232-434222"),
-        Restaurant(name: "Po's Atelier", type: "Bakery", location: "G/F, 62 Po Hing Fong, Sheung Wan, Hong Kong", image: "posatelier.jpg", isVisited: false, phoneNumber: "234-834322"),
-        Restaurant(name: "Bourke Street Bakery", type: "Chocolate", location: "633 Bourke St Sydney New Wouth Wales 2010 Surry Hills", image: "bourkestreetbakery.jpg", isVisited: false, phoneNumber: "982-434343"),
-        Restaurant(name: "Haigh's Chocolate", type: "Cafe", location: "412-414 George St Sydney New South Wales", image: "haighschocolate.jpg", isVisited: false, phoneNumber: "734-232323"),
-        Restaurant(name: "Palomino Espresso", type: "American /Seafood", location: "Shop 1 61 York St Sydney New South Wales", image: "palominoespresso.jpg", isVisited: false, phoneNumber: "872-734343"),
-        Restaurant(name: "Upstate", type: "American", location: "95 1st Ave New York, NY 10003", image: "upstate.jpg", isVisited: false, phoneNumber: "343-233221"),
-        Restaurant(name: "Traif", type: "American", location: "229 S 4th St Brooklyn, NY 11211", image: "traif.jpg", isVisited: false, phoneNumber: "985-723623"),
-        Restaurant(name: "Graham Avenue Meats And Deli", type: "Breakfast & Brunch", location: "445 Graham Ave Brooklyn, NY 11211", image: "grahamavenuemeats.jpg", isVisited: false, phoneNumber: "445-232345"),
-        Restaurant(name: "Waffles & Wolf", type: "Coffee & Tea", location: "413 Graham Ave Brroklyn, NY 11211", image: "wafflewolf.jpg", isVisited: false, phoneNumber: "434-232322"),
-        Restaurant(name: "Five Leaves", type: "Coffee & Tea", location: "18 Bedford Ave Brooklyn, NY 11222", image: "fiveleaves.jpg", isVisited: false, phoneNumber: "343-234553"),
-        Restaurant(name: "Cafe Lore", type: "Latin American", location: "Sunset Park 4601 4th Ave Brooklyn, NY 11220", image: "cafelore.jpg", isVisited: false, phoneNumber: "342-455433"),
-        Restaurant(name: "Confessional", type: "Spanish", location: "308 E 6th St New York, NY 10003", image: "confessional.jpg", isVisited: false, phoneNumber: "643-332323"),
-        Restaurant(name: "Barrafina", type: "Spanish", location: "54 Frith Street London W1D 4SL United Kingdom", image: "barrafina.jpg", isVisited: false, phoneNumber: "542-343434"),
-        Restaurant(name: "Donostia", type: "Spanish", location: "10 Seymour Place London W1H 7ND United Kingdom", image: "donostia.jpg", isVisited: false, phoneNumber: "722-232323"),
-        Restaurant(name: "Royal Oak", type: "British", location: "2 Regency Street LOndon SW1P 4BZ United Kingdom", image: "royaloak.jpg", isVisited: false, phoneNumber: "343-988834"),
-        Restaurant(name: "Thai Cafe", type: "Thai", location: "22 Charlwood Street London SW1V 2DY Pimlico", image: "thaicafe.jpg", isVisited: false, phoneNumber: "432-344050"),
-    ]
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellIdentifier = "Cell"
@@ -76,11 +79,15 @@ class RestaurantTableViewController: UITableViewController {
         cell.nameLabel.text = restaurants[indexPath.row].name
         cell.locationLabel.text = restaurants[indexPath.row].location
         cell.typeLabel.text = restaurants[indexPath.row].type
-        cell.thumbnailImageView.image = UIImage(named: restaurants[indexPath.row].image)
+        //cell.thumbnailImageView.image = UIImage(named: restaurants[indexPath.row].image)
+        cell.thumbnailImageView.image = UIImage(data: restaurants[indexPath.row].image!)
         //cell.thumbnailImageView.layer.cornerRadius = 30.0
         //cell.thumbnailImageView.clipsToBounds = true
         
-        cell.accessoryType = restaurants[indexPath.row].isVisited ? .Checkmark : .None
+        if let isVisited = restaurants[indexPath.row].isVisited?.boolValue {
+            cell.accessoryType = isVisited ? .Checkmark : .None
+        }
+        //cell.accessoryType = restaurants[indexPath.row].isVisited ? .Checkmark : .None
         /*if restaurantIsVisited[indexPath.row]{
             cell.accessoryType = .Checkmark
         }else{
@@ -152,7 +159,8 @@ class RestaurantTableViewController: UITableViewController {
         // social media share button
         let shareAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Share", handler: {(action, indexPath) -> Void in
             let defaultText = "Just checking in at " + self.restaurants[indexPath.row].name
-            if let imageToShare = UIImage(named: self.restaurants[indexPath.row].image){
+            //if let imageToShare = UIImage(named: self.restaurants[indexPath.row].image){
+            if let imageToShare = UIImage(data: self.restaurants[indexPath.row].image!) {
                 let activityController = UIActivityViewController(activityItems: [defaultText, imageToShare], applicationActivities: nil)
                 self.presentViewController(activityController, animated: true, completion: nil)
             }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class AddRestaurantController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -32,6 +33,23 @@ class AddRestaurantController: UITableViewController, UIImagePickerControllerDel
             print("Have you been here: \(isVisited)")
             //performSegueWithIdentifier(unwindToHomeSegue, sender: self)
             dismissViewControllerAnimated(true, completion: nil)
+        }
+        
+        if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
+            restaurant = NSEntityDescription.insertNewObjectForEntityForName("Restaurant", inManagedObjectContext: managedObjectContext) as! Restaurant
+            restaurant.name = nameTextField.text!
+            restaurant.type = typeTextField.text!
+            restaurant.location = locationTextField.text!
+            if let restaurantImage = imageView.image {
+                restaurant.image = UIImagePNGRepresentation(restaurantImage)
+            }
+            restaurant.isVisited = isVisited
+            do {
+                try managedObjectContext.save()
+            } catch {
+                print(error)
+                return
+            }
         }
     }
     
