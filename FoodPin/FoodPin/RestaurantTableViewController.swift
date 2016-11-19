@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class RestaurantTableViewController: UITableViewController {
+class RestaurantTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     var restaurants:[Restaurant] = []
     //
@@ -37,6 +37,8 @@ class RestaurantTableViewController: UITableViewController {
     //        Restaurant(name: "Thai Cafe", type: "Thai", location: "22 Charlwood Street London SW1V 2DY Pimlico", image: "thaicafe.jpg", isVisited: false, phoneNumber: "432-344050"),
     //    ]
     
+    var fetchResultController:NSFetchedResultsController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -52,6 +54,54 @@ class RestaurantTableViewController: UITableViewController {
         //啓動Self Sizing Cells
         tableView.estimatedRowHeight = 50.0
         tableView.rowHeight = UITableViewAutomaticDimension
+        
+        let fetchRequest = NSFetchRequest(entityName: "Restaurant")
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
+            fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+            fetchResultController.delegate = self
+            
+            do {
+                try fetchResultController.performFetch()
+                restaurants = fetchResultController.fetchedObjects as! [Restaurant]
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    // 當讀取結果控制器準備開始處理內容變更時會被呼叫
+    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+        tableView.beginUpdates()
+    }
+    
+    // 當託管物件內容有如何內容改變（例如：新餐廳被儲存）時會被呼叫
+    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+        switch type {
+        case .Insert:
+            if let _newIndexPath = newIndexPath {
+                tableView.insertRowsAtIndexPaths([_newIndexPath], withRowAnimation: .Fade)
+            }
+        case .Delete:
+            if let _indexPath = indexPath {
+                tableView.deleteRowsAtIndexPaths([_indexPath], withRowAnimation: .Fade)
+            }
+        case .Update:
+            if let _indexPath = indexPath {
+                tableView.reloadRowsAtIndexPaths([_indexPath], withRowAnimation: .Fade)
+            }
+        default:
+            tableView.reloadData()
+        }
+        
+        restaurants = controller.fetchedObjects as! [Restaurant]
+    }
+    
+    // 在讀取結果控制器完成變更後，會呼叫此function
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        tableView.endUpdates()
     }
 
     override func didReceiveMemoryWarning() {
